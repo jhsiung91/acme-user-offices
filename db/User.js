@@ -1,8 +1,8 @@
-const conn = require('./db')
+const db = require('./db')
 
-const User = conn.define('user',{
+const User = db.define('user',{
 	name:{
-		type: conn.Sequelize.STRING,
+		type: db.Sequelize.STRING,
 		allowNull: false,
 		validate: {notEmpty: true}
 	}

@@ -1,15 +1,15 @@
-const conn = require('./db')
+const db = require('./db')
 
-const Office = conn.define('office', {
+const Office = db.define('office', {
 	name:{
-		type: conn.Sequelize.STRING,
+		type: db.Sequelize.STRING,
 		allowNull: false
 	},
 	lat:{
-		type: conn.Sequelize.FLOAT
+		type: db.Sequelize.FLOAT
 	},
 	lng:{
-		type: conn.Sequelize.FLOAT
+		type: db.Sequelize.FLOAT
 	}
 })
 

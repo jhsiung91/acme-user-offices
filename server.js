@@ -5,7 +5,7 @@ const path = require('path')
 const nunjucks = require('nunjucks')
 const users = require('./routes/users')
 const offices = require('./routes/offices');
-const conn = require('./db')
+const db = require('./db')
 const morgan = require('morgan')
 const port = process.env.PORT || 3000
 
@@ -25,6 +25,12 @@ app.get('/',(req,res,next)=>{
 app.use('/users', users);
 app.use('/offices', offices);
 
-app.listen(port, ()=>{
+db.sync()
+.then(()=>{
+	return db.seed();
+})
+.then(()=>{
+	app.listen(port, ()=>{
 	console.log(`listening on port ${port}`)
+})
 })
